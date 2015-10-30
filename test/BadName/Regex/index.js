@@ -1,0 +1,1 @@
+require('elquire.BadNamespace.module');

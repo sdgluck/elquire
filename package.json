@@ -1,0 +1,33 @@
+{
+  "name": "elquire",
+  "version": "0.0.1",
+  "description": "Local dependencies without the hassle: require by a given name instead of a relative path.",
+  "main": "index.js",
+  "author": "Sam Gluck <sdgluck@gmail.com>",
+  "license": "MIT",
+  "repository": "sdgluck/elquire",
+  "engines": {
+    "node": ">=4.0.0"
+  },
+  "scripts": {
+    "test": "node ./node_modules/mocha/bin/_mocha test"
+  },
+  "keywords": [
+    "elquire",
+    "local",
+    "dependency",
+    "dependencies",
+    "module",
+    "modules",
+    "loader",
+    "extension",
+    "transform",
+    "path",
+    "require"
+  ],
+  "devDependencies": {
+    "babel": "^5.8.29",
+    "chai": "^3.4.0",
+    "mocha": "^2.3.3"
+  }
+}
