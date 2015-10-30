@@ -114,7 +114,7 @@ Add files and folders to ignore:
 
 ## ES6
 
-### ES6 Import Statements
+### Imports
 
 `elquire` supports ES6 import statements. For example:
 
