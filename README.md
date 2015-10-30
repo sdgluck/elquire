@@ -17,15 +17,6 @@ Give any local dependency in your application a module definition at the beginni
 
     // ... file contents ...
 
-You can use any character as a separator. In fact, `elquire` has no concept of a separator. These are all legal within the same application:
-
-    /// <module name=myAppUtility>
-    /// <module name=myApp_utility>
-    /// <module name=myApp/utility>
-    /// <module name=myApp-utility>
-    /// <module name=myApp:utility>
-    // etc.
-
 ### 2. Initialise `elquire`
 
 Initialise `elquire` at the top of your application's entry file and invoke with the desired namespace*:
