@@ -19,15 +19,12 @@ Give any local dependency in your application a module definition at the beginni
 
 ### 2. Initialise `elquire`
 
-Initialise `elquire` at the top of your application's entry file and invoke with the desired namespace*:
+Initialise `elquire` at the top of your application's entry file and invoke with the desired namespace*.
 
     require('elquire')('myApp');
-
-    // or...
-
-    require('elquire')({
-        namespace: 'myApp'
-    });
+    
+    // Require your application:
+    require('index.js');
 
 ### 3. Require the module by name
 
@@ -115,7 +112,18 @@ Add files and folders to ignore:
         ]
     });
 
-## Babel
+## ES6
+
+### ES6 Import Statements
+
+`elquire` supports ES6 import statements. For example:
+
+    import 'myApp.utility';
+    import * from 'myApp.utility';
+    import {utilMethod, anotherUtilMethod} from 'myApp.utility';
+    // etc.
+
+### Babel
 
 If you are using `babel/register` in your application, require it __before__ `elquire`. It will still
 work as usual and `elquire` will transform module names in ES6 import statements too.
@@ -125,4 +133,4 @@ work as usual and `elquire` will transform module names in ES6 import statements
     require('elquire');
 
     // index.js
-    import utility from 'myApp.utility';
+    import 'myApp.utility';
