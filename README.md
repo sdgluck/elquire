@@ -125,8 +125,7 @@ Add files and folders to ignore:
 
 ### Babel
 
-If you are using `babel/register` in your application, require it __before__ `elquire`. It will still
-work as usual and `elquire` will transform module names in ES6 import statements too.
+If you are using `babel/register` in your application, require it __before__ `elquire` in your entry file:
 
     // entry.js
     require('babel/register');
