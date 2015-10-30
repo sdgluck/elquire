@@ -5,6 +5,7 @@
 Made with ❤ at [@outlandish](http://www.twitter.com/outlandish)
 
 <a href="http://badge.fury.io/js/elquire"><img alt="npm version" src="https://badge.fury.io/js/elquire.svg"></a>
+<a href="https://travis-ci.org/sdgluck/elquire"><img alt="CI build status" src="https://travis-ci.org/sdgluck/elquire.svg"></a>
 
 ## Usage
 
@@ -77,7 +78,7 @@ A regular expression to match against all module names.
 
     // begin names with 'local.'
     require('elquire')({
-        name: /^local\./ 
+        name: /^local\./
     });
 
 ### `path`
