@@ -1,6 +1,10 @@
 # elquire
 
-> Local dependencies without the hassle: require by a given name instead of a relative path.
+> Local node dependencies without the hassle: require by a given name instead of a relative path.
+
+Made with ❤ at [@outlandish](http://www.twitter.com/outlandish)
+
+<a href="http://badge.fury.io/js/elquire"><img alt="npm version" src="https://badge.fury.io/js/elquire.svg"></a>
 
 ## Usage
 
@@ -71,8 +75,9 @@ Default: none.
 A regular expression to match against all module names.
 `elquire` throws an error when a module name does not satisfy the regular expression.
 
+    // begin names with 'local.'
     require('elquire')({
-        name: /^local\./ // begin names with 'local.'
+        name: /^local\./ 
     });
 
 ### `path`
