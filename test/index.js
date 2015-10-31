@@ -50,17 +50,17 @@ describe('elquire', function () {
 
     it('should allow invocation without options', function () {
         result = entry('WithoutOptions');
-        assert.isTrue('elquire.WithoutOptions.module' in result.elquire._modules);
+        assert.isTrue(result.elquire._modules.has('elquire.WithoutOptions.module'));
     });
 
     it('should apply namespace option at runtime', function () {
         result = require('./WithOptions/Namespace/string.js');
-        assert.isTrue('elquire.WithOptions.module' in result.elquire._modules);
+        assert.isTrue(result.elquire._modules.has('elquire.WithOptions.module'));
     });
 
     it('should apply options object at runtime', function () {
         result = require('./WithOptions/Namespace/object.js');
-        assert.isTrue('elquire.WithOptions.module' in result.elquire._modules);
+        assert.isTrue(result.elquire._modules.has('elquire.WithOptions.module'));
     });
 
     it('should error when a module name is used more than once', function (cb) {
@@ -101,7 +101,7 @@ describe('elquire', function () {
         let result = entry('BadDefinition');
         keys.forEach(function (name, i) {
             let moduleName = badDefinitions[name];
-            assert.isFalse(moduleName in result._modules, moduleName);
+            assert.isFalse(result.elquire._modules.has(moduleName), moduleName);
             if (i + 1 === keys.length) {
                 cb();
             }
@@ -110,15 +110,15 @@ describe('elquire', function () {
 
     it('should not register modules that exist within an ignored folder', function () {
         result = entry('WithOptions/Ignore');
-        assert.isFalse('elquire.WithOptions.ignoredModule' in result.elquire._modules);
-        assert.isFalse('elquire.WithOptions.hiddenModule' in result.elquire._modules);
-        assert.isFalse('elquire.WithOptions.nodeModule' in result.elquire._modules);
+        assert.isFalse(result.elquire._modules.has('elquire.WithOptions.ignoredModule'));
+        assert.isFalse(result.elquire._modules.has('elquire.WithOptions.hiddenModule'));
+        assert.isFalse(result.elquire._modules.has('elquire.WithOptions.nodeModule'));
     });
 
     it('should not register modules outside of given path', function () {
         result = entry('WithOptions/Path');
-        assert.isTrue('elquire.WithOptions.inPath' in result.elquire._modules);
-        assert.isFalse('elquire.WithOptions.outsidePath' in result.elquire._modules);
+        assert.isTrue(result.elquire._modules.has('elquire.WithOptions.inPath'));
+        assert.isFalse(result.elquire._modules.has('elquire.WithOptions.outsidePath'));
     });
 
     function catchAndMatch (fn, re, cb) {

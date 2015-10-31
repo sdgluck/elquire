@@ -11,12 +11,6 @@ const declaration_Re = /^\/\/\/\s*<module name=["'`]?([^"'` \n\t\r\0]+)["'`]?>$/
 const commonJs_Re = /require\(["'`]([^"'`\n\t\r\0]+)["'`]\)/g;
 const es6_Re = /import(?:.+[.+]? from)? ["'`]([^"'`\n\t\r\0]+)["'`]/g;
 
-let options = defaultOptions();
-
-/**
- * Validators for each option.
- * @type {Object}
- */
 const optionValidators = {
     namespace: (v) => typeof v === 'string',
     name: (v) => v instanceof RegExp,
@@ -24,10 +18,6 @@ const optionValidators = {
     path: (v) => typeof v === 'string'
 };
 
-/**
- * Validators that check a module definition is valid against the chosen options.
- * @type {Object}
- */
 const moduleValidators = {
     namespace: {
         fn: (m, v) => m.name.indexOf(v) === 0,
@@ -39,17 +29,24 @@ const moduleValidators = {
     }
 };
 
-let modules = buildModuleMap({}, options.path);
+let err = (msg) => new Error(`elquire: ${msg}`);
+let options = defaultOptions();
+let modules = buildModuleMap(new Map(), options.path);
+let oldLoader;
 
-const oldLoader = require.extensions['.js'];
-require.extensions['.js'] = function (m, filename) {
-    let compile = m._compile.bind(m);
-    m._compile = (content) => {
-        content = transform(filename, content);
-        compile(content, filename);
+registerLoader();
+
+function registerLoader () {
+    oldLoader = require.extensions['.js'];
+    require.extensions['.js'] = function (m, filename) {
+        let compile = m._compile.bind(m);
+        m._compile = (content) => {
+            content = transform(filename, content);
+            compile(content, filename);
+        };
+        oldLoader(m, filename);
     };
-    oldLoader(m, filename);
-};
+}
 
 function defaultOptions () {
     return {
@@ -60,10 +57,6 @@ function defaultOptions () {
 
 function unload () {
     require.extensions['.js'] = oldLoader;
-}
-
-function err (msg) {
-    return new Error('elquire: ' + msg);
 }
 
 /**
@@ -92,7 +85,7 @@ function shouldIgnore (dir) {
 
 /**
  * Identify all elquire module definitions within `dir`.
- * @param {Object} modules
+ * @param {Map} modules
  * @param {Object} dir
  * @returns {Object}
  */
@@ -105,9 +98,9 @@ function buildModuleMap (modules, dir) {
             buildModuleMap(modules, moduleDir);
         } else if (!ignore) {
             let obj = moduleDefinition(moduleDir);
-            if (obj && !modules[obj.name]) {
+            if (obj && !modules.has(obj.name)) {
                 isValidModuleDefinition(obj);
-                modules[obj.name] = moduleDir;
+                modules.set(obj.name, moduleDir);
             } else if (obj) {
                 throw err(`module name '${obj.name}' is already registered`);
             }
@@ -179,8 +172,8 @@ function transform (file, content) {
         let match;
         while ((match = re.exec(content)) != null) {
             let moduleName = match[1];
-            if (moduleName in modules) {
-                let modulePath = modules[moduleName];
+            if (modules.has(moduleName)) {
+                let modulePath = modules.get(moduleName);
                 let fromDir = path.dirname(file);
                 let toDir = path.dirname(modulePath);
                 let relativePath = path.relative(fromDir, toDir).replace(/[\\]/g, '/');
@@ -215,7 +208,7 @@ function initialise (opts) {
         isValidOptions(opts);
         extend(opts);
     }
-    modules = buildModuleMap({}, options.path);
+    modules = buildModuleMap(new Map(), options.path);
     return {
         _unload: unload,
         _modules: modules

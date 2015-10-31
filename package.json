@@ -1,6 +1,6 @@
 {
   "name": "elquire",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Local Node dependencies without the hassle: require by a given name instead of a relative path.",
   "main": "index.js",
   "author": "Sam Gluck <sdgluck@gmail.com>",
