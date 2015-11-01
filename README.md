@@ -9,6 +9,10 @@ Made with ❤ at [@outlandish](http://www.twitter.com/outlandish)
 
 ## Usage
 
+Install with npm:
+
+    npm install elquire --save
+
 ### 1. Register the module
 
 Give any local dependency in your application a module definition at the beginning of the file:
