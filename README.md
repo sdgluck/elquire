@@ -13,15 +13,7 @@ Install with npm:
 
     npm install elquire --save
 
-### 1. Register the module
-
-Give any local dependency in your application a module definition at the beginning of the file:
-
-    /// <module name=myApp.utility>
-
-    // ... file contents ...
-
-### 2. Initialise `elquire`
+### 1. Initialise `elquire`
 
 Initialise `elquire` at the top of your application's entry file and invoke with the desired namespace*.
 
@@ -30,7 +22,18 @@ Initialise `elquire` at the top of your application's entry file and invoke with
     // Require your application:
     require('index.js');
 
-### 3. Require the module by name
+_*You are not forced to use a namespace, however I strongly recommend that you do in order to
+avoid collisions with the names of external dependencies!_
+
+### 2. Register a module
+
+Give any local dependency in your application a module definition at the beginning of the file:
+
+    /// <module name=myApp.utility>
+
+    // ... file contents ...
+
+### 3. Require a module
 
 Finally, replace the relative path to a local dependency with its given name:
 
@@ -41,9 +44,6 @@ Finally, replace the relative path to a local dependency with its given name:
     let util = require('myApp.utility');
 
 Ta-da! At runtime `elquire` will dynamically resolve the dependency's name to a relative path (the above, backwards).
-
-*You are not forced to use a namespace, however I strongly recommend that you do in order to
-avoid collisions with the names of external dependencies!
 
 ## Configuration
 
