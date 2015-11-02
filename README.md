@@ -97,7 +97,7 @@ Add files and folders to ignore:
 
     require('elquire')({
 
-        // Set the namespace (as above)
+        // Set the namespace
         namespace: 'myApp',
 
         // Ensure that all module names satisfy a regular expression
