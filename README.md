@@ -7,6 +7,16 @@ Made with ❤ at [@outlandish](http://www.twitter.com/outlandish)
 <a href="http://badge.fury.io/js/elquire"><img alt="npm version" src="https://badge.fury.io/js/elquire.svg"></a>
 <a href="https://travis-ci.org/sdgluck/elquire"><img alt="CI build status" src="https://travis-ci.org/sdgluck/elquire.svg"></a>
 
+__v1 introduces a breaking change! The module now expects immediate invocation with or without options. This avoids
+traversing the directory structure for a first time without options, which was offered as a convenience but
+adds unnecessary overhead:__
+
+    // If you are doing this:
+    require('elquire');
+
+    // You must now do this:
+    require('elquire')();
+
 ## Usage
 
 Install with npm:
@@ -15,15 +25,12 @@ Install with npm:
 
 ### 1. Initialise `elquire`
 
-Initialise `elquire` at the top of your application's entry file and invoke with the desired namespace*.
+Initialise `elquire` at the top of your application's entry file and invoke with the desired namespace.
 
     require('elquire')('myApp');
-    
-    // Require your application:
-    require('index.js');
 
-_*You are not forced to use a namespace, however I strongly recommend that you do in order to
-avoid collisions with the names of external dependencies!_
+    // Require your application:
+    require('./index.js');
 
 ### 2. Register a module
 
@@ -49,7 +56,7 @@ Ta-da! At runtime `elquire` will dynamically resolve the dependency's name to a 
 
 ### `namespace`
 
-Default: none.
+Default: none
 
 Require that all module names begin with the given string.
 
@@ -63,7 +70,7 @@ Require that all module names begin with the given string.
 
 ### `name`
 
-Default: none.
+Default: none
 
 A regular expression to match against all module names.
 `elquire` throws an error when a module name does not satisfy the regular expression.
@@ -75,7 +82,7 @@ A regular expression to match against all module names.
 
 ### `path`
 
-Default: `'./'`.
+Default: `'./'`
 
 Override this behaviour:
 
@@ -85,7 +92,7 @@ Override this behaviour:
 
 ### `ignore`
 
-Default: hidden folders & files (e.g. `.git`) and *node_modules* folders (`['node_modules', /^\./]`).
+Default: hidden folders & files (e.g. `.git`) and *node_modules* folders (`['node_modules', /^\./]`)
 
 Add files and folders to ignore:
 
