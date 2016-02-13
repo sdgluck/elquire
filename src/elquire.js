@@ -271,15 +271,15 @@ export default function (userOpts) {
         let moduleName = match[1]
 
         if (modules[moduleName]) {
-          let modulePath = modules[moduleName];
-          let fromDir = path.dirname(file);
-          let toDir = path.dirname(modulePath);
-          let relativePath = path.relative(fromDir, toDir).replace(/[\\]/g, '/');
-          let index = match.index + match[0].indexOf(match[1]);
-          let contentStart = content.substr(0, index);
-          let contentEnd = content.substr(index + moduleName.length, content.length);
-          relativePath = ['.', relativePath, path.basename(modulePath)].join('/');
-          content = contentStart + relativePath + contentEnd;
+          let modulePath = modules[moduleName]
+          let fromDir = path.dirname(file)
+          let toDir = path.dirname(modulePath)
+          let relativePath = path.relative(fromDir, toDir).replace(/[\\]/g, '/')
+          let index = match.index + match[0].indexOf(match[1])
+          let contentStart = content.substr(0, index)
+          let contentEnd = content.substr(index + moduleName.length, content.length)
+          relativePath = ['.', relativePath, path.basename(modulePath)].join('/')
+          content = contentStart + relativePath + contentEnd
         }
       }
     })
