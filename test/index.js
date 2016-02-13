@@ -1,3 +1,4 @@
+/* global describe:false, it:false, beforeEach:false */
 'use strict'
 
 var expect = require('expect')

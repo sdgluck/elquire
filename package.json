@@ -16,8 +16,8 @@
     "test": "node ./node_modules/mocha/bin/_mocha test",
     "lint": "standard ./src/*.js",
     "build": "babel ./src --out-dir ./",
-    "check": "npm run -s lint && npm run -s test",
-    "prepublish": "npm run check && npm run -s build"
+    "check": "npm run -s lint && npm run -s build && npm run -s test",
+    "prepublish": "npm run check"
   },
   "bugs": {
     "url": "https://github.com/sdgluck/elquire/issues"
