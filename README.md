@@ -147,10 +147,10 @@ Add files and folders to ignore:
 
 ### Babel
 
-If you are using `babel/register` in your application, require it __before__ `elquire` in your entry file:
+If you are using `babel-register` in your application, require it __before__ `elquire` in your entry file:
 
     // entry.js
-    require('babel/register');
+    require('babel-register');
     require('elquire');
 
     // index.js
