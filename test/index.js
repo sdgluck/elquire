@@ -5,7 +5,7 @@ var catchAndMatch = require('catch-and-match')
 
 describe('elquire', function () {
   function entry (path) {
-    return require(`./${path}/entry.js`)
+    return require('./' + path + '/entry.js')
   }
 
   function entryFn (path) {
@@ -108,7 +108,7 @@ describe('elquire', function () {
       var name = optionNames[i]
       try {
         require('./_isolated')({[name]: -1})
-        cb(new Error(`did not error for bad '${name}' option`))
+        cb(new Error('Did not error for bad "' + name + '" option'))
         return
       } catch (err) {
         if (i + 1 === optionNames.length) {
