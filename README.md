@@ -10,7 +10,7 @@ Made with ❤ at [@outlandish](http://www.twitter.com/outlandish)
 
 __v1.0.0 introduces a breaking change!__ The module now expects immediate invocation with or without options. This avoids
 traversing the directory structure for a first time without options, which was offered as a convenience but
-adds unnecessary overhead:__
+adds unnecessary overhead:
 
     // If you are doing this:
     require('elquire');
