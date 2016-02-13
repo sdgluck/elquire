@@ -49,7 +49,7 @@ describe('elquire', function () {
   ]
 
   // Give time for babel require hook to do its thing
-  this.timeout(10000)
+  this.timeout(20000)
 
   beforeEach(function () {
     if (result && result.elquire) {
