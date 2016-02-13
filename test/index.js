@@ -107,7 +107,9 @@ describe('elquire', function () {
     for (var i = 0; i < optionNames.length; i++) {
       var name = optionNames[i]
       try {
-        require('./_isolated')({[name]: -1})
+        var obj = {};
+        obj[name] = -1;
+        require('./_isolated')(obj)
         cb(new Error('Did not error for bad "' + name + '" option'))
         return
       } catch (err) {
