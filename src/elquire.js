@@ -271,17 +271,15 @@ export default function (userOpts) {
         let moduleName = match[1]
 
         if (modules[moduleName]) {
-          const modulePath = modules[moduleName]
-          const parts = modulePath.split('\\')
-          const fileName = parts[parts.length - 1]
-          const fromDir = path.dirname(file)
-          const toDir = path.dirname(modulePath)
-          const startIndex = match.index + match[0].indexOf(match[1])
-          const contentStart = content.substr(0, startIndex)
-          const contentEnd = content.substr(startIndex + moduleName.length, content.length)
-          const fullPath = path.relative(fromDir, toDir).replace(/[\\]/g, '/')
-          const fullPathWithFilename = ['.', fullPath, fileName].join('/')
-          content = contentStart + fullPathWithFilename + contentEnd
+          let modulePath = modules[moduleName];
+          let fromDir = path.dirname(file);
+          let toDir = path.dirname(modulePath);
+          let relativePath = path.relative(fromDir, toDir).replace(/[\\]/g, '/');
+          let index = match.index + match[0].indexOf(match[1]);
+          let contentStart = content.substr(0, index);
+          let contentEnd = content.substr(index + moduleName.length, content.length);
+          relativePath = ['.', relativePath, path.basename(modulePath)].join('/');
+          content = contentStart + relativePath + contentEnd;
         }
       }
     })
