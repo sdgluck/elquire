@@ -4,6 +4,7 @@
 
 - [_Breaking_] The module now expects immediate invocation with or without options. This avoids traversing the
 directory structure for a first time without options, which was offered as a convenience but adds unnecessary overhead.
+- Supports Node >=0.12
 - Added ability to set elquire options by package.json `elquire` property.
 
 ## 0.0.2
