@@ -1,2 +1,2 @@
-module.exports.elquire = require('../../../index.js')('elquire');
-require('./index.js');
+module.exports.elquire = require('../../../index.js')('elquire')
+require('./index.js')

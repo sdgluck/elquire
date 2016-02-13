@@ -1,1 +1,1 @@
-require('elquire.BadNamespace.module');
+require('elquire.BadNamespace.module')

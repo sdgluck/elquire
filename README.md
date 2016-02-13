@@ -6,8 +6,9 @@ Made with ❤ at [@outlandish](http://www.twitter.com/outlandish)
 
 <a href="http://badge.fury.io/js/elquire"><img alt="npm version" src="https://badge.fury.io/js/elquire.svg"></a>
 <a href="https://travis-ci.org/sdgluck/elquire"><img alt="CI build status" src="https://travis-ci.org/sdgluck/elquire.svg"></a>
+[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
 
-__v1 introduces a breaking change! The module now expects immediate invocation with or without options. This avoids
+__v1.0.0 introduces a breaking change!__ The module now expects immediate invocation with or without options. This avoids
 traversing the directory structure for a first time without options, which was offered as a convenience but
 adds unnecessary overhead:__
 
@@ -53,6 +54,16 @@ Finally, replace the relative path to a local dependency with its given name:
 Ta-da! At runtime `elquire` will dynamically resolve the dependency's name to a relative path (the above, backwards).
 
 ## Configuration
+
+If you prefer, you can place all the options documented here within your `package.json` file. See an example below:
+
+    // package.json
+    "elquire": {
+        "namespace": "myApp"
+    }
+
+    // initialisation without options object
+    require('elquire')()
 
 ### `namespace`
 
@@ -144,3 +155,8 @@ If you are using `babel/register` in your application, require it __before__ `el
 
     // index.js
     import 'myApp.utility';
+
+## Contributing
+
+All pull requests and issues welcome!
+If you're not sure how, check out Kent C. Dodds' [great video tutorials on egghead.io](https://egghead.io/lessons/javascript-identifying-how-to-contribute-to-an-open-source-project-on-github)!

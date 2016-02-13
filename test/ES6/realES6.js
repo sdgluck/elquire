@@ -1,3 +1,2 @@
-import elquire from '../../index.js';
-import value from './index.js';
-export default { elquire, value };
+import { default as valueFn } from './index.js'
+export default { value: valueFn() }

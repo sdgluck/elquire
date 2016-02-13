@@ -1,3 +1,3 @@
 module.exports = function (opts) {
-    require('../../index.js')(opts);
-};
+  require('../../index.js')(opts)
+}

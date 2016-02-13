@@ -1,1 +1,1 @@
-require('elquire.WithOptions.module');
+require('elquire.WithOptions.module')

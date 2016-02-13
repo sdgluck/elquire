@@ -1,12 +1,12 @@
-'use strict';
+'use strict'
 
 if (!module.parent) {
-    throw new Error('elquire should be required within a module');
+  throw new Error('Expected elquire to be required within a module')
 }
 
 if (global.__elquire) {
-    throw new Error('only one instance of elquire is allowed');
+  throw new Error('Only one instance of elquire should be created')
 }
-global.__elquire = true;
+global.__elquire = true
 
-module.exports = require('./elquire');
+module.exports = require('./elquire').default
