@@ -1,6 +1,5 @@
-/.idea
-/.DS_Store
+.idea
+.DS_Store
 /node_modules
-/bin
 /elquire.js
 /index.js
