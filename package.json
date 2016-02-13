@@ -10,14 +10,13 @@
     "url": "git+https://github.com/sdgluck/elquire.git"
   },
   "engines": {
-    "node": ">=0.12.0"
+    "node": ">=4.0.0"
   },
   "scripts": {
     "test": "node ./node_modules/mocha/bin/_mocha test",
     "lint": "standard ./src/*.js",
     "build": "babel ./src --out-dir ./",
-    "check": "npm run -s lint && npm run -s build && npm run -s test",
-    "prepublish": "npm run check"
+    "prepublish": "npm run -s lint && npm run -s build && npm run -s test"
   },
   "bugs": {
     "url": "https://github.com/sdgluck/elquire/issues"
