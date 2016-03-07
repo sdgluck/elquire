@@ -1,6 +1,6 @@
 # elquire
 
-> Local Node dependencies without the hassle: require by a given name instead of a relative path.
+> Require local Node dependencies by a given name instead of a relative path
 
 Made with ❤ at [@outlandish](http://www.twitter.com/outlandish)
 
