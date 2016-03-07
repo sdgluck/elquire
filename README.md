@@ -142,7 +142,7 @@ Add files and folders to ignore:
 
     import 'myApp.utility';
     import * from 'myApp.utility';
-    import {utilMethod, anotherUtilMethod} from 'myApp.utility';
+    import { utilMethod, anotherUtilMethod } from 'myApp.utility';
     // etc.
 
 ### Babel
