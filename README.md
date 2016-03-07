@@ -159,4 +159,5 @@ If you are using `babel-register` in your application, require it __before__ `el
 ## Contributing
 
 All pull requests and issues welcome!
+
 If you're not sure how, check out Kent C. Dodds' [great video tutorials on egghead.io](https://egghead.io/lessons/javascript-identifying-how-to-contribute-to-an-open-source-project-on-github)!
